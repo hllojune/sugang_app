@@ -14,6 +14,9 @@
     <color name="background_light_grey">#F5F5F5</color>
     <color name="background_login">#F1FCFE</color>
 
+    <color name="feedback_green">#4CAF50</color>
+    <color name="feedback_red">#F44336</color>
+
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
