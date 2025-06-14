@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_cart_history"
+        android:title="장바구니 내역조회" />
+    <item
+        android:id="@+id/nav_cart_search"
+        android:title="강좌조회 신청" />
+    <item
+        android:id="@+id/nav_cart_direct_add"
+        android:title="강좌코드 직접입력" />
+    <item
+        android:id="@+id/nav_cart_manage"
+        android:title="수강내역 조회,삭제" />
+</menu>

@@ -1,4 +1,4 @@
-package com.example.sugang; // 본인의 패키지 이름에 맞게 수정하세요
+package com.example.sugang;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,9 +25,9 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == R.id.menu_item_settings) {
                 // 설정 아이콘 클릭 시 동작
-                Toast.makeText(this, "설정 화면으로 이동합니다.", Toast.LENGTH_SHORT).show();
-                // Intent settingsIntent = new Intent(this, SettingsActivity.class);
-                // startActivity(settingsIntent);
+                // Toast.makeText(this, "설정 화면으로 이동합니다.", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
                 return true;
             }
             return false;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         menuList.add(new MenuItem(R.drawable.ic_main_notice, "공지사항", "모바일 수강신청 사용 유의사항"));
         menuList.add(new MenuItem(R.drawable.ic_main_search, "조회", "개설강좌/강의계획서, 장바구니내역, 수강신청내역"));
         menuList.add(new MenuItem(R.drawable.ic_main_cart, "장바구니", "장바구니 신청/조회/취소"));
-        menuList.add(new MenuItem(R.drawable.ic_main_registration, "수강신청", "장바구니에서 신청, 개설강좌 조회/신청, 수강신청 조회/삭제"));
+        menuList.add(new MenuItem(R.drawable.ic_main_registration, "수강신청", "장바구니에서 신청, 개설강좌 조회/신청,\n 수강신청 조회/삭제"));
 
         // 4. 어댑터 생성 및 RecyclerView에 연결
         mainMenuAdapter = new MainMenuAdapter(menuList);

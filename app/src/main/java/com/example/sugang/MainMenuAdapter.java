@@ -57,17 +57,30 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.MenuVi
         holder.title.setText(currentItem.getTitle());
         holder.subtitle.setText(currentItem.getSubtitle());
 
-        // 각 아이템 뷰에 클릭 이벤트 설정
-        holder.itemView.setOnClickListener(v -> {
-            // 클릭된 아이템의 제목에 따라 다른 동작을 하도록 설정할 수 있습니다.
-            String clickedTitle = currentItem.getTitle();
-            Toast.makeText(v.getContext(), clickedTitle + " 클릭됨", Toast.LENGTH_SHORT).show();
+        // 각 아이템 뷰에 클릭 이벤트를 설정합니다.
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 클릭된 아이템의 제목을 가져옵니다.
+                String clickedTitle = currentItem.getTitle();
+                Context context = v.getContext();
 
-            // 예시: 제목이 "공지사항"이면 NoticeActivity로 이동
-            // if (clickedTitle.equals("공지사항")) {
-            //     Intent intent = new Intent(v.getContext(), NoticeActivity.class);
-            //     v.getContext().startActivity(intent);
-            // }
+                // 클릭된 아이템이 '조회'일 경우
+                if (clickedTitle.equals("조회")) {
+                    // SearchActivity로 이동하는 Intent를 생성합니다.
+                    Intent intent = new Intent(context, SearchActivity.class);
+                    context.startActivity(intent);
+                }
+                // 다른 메뉴 아이템에 대한 처리 (필요하다면)
+                else if (clickedTitle.equals("장바구니")) {
+                    // Intent intent = new Intent(context, CartActivity.class);
+                    // context.startActivity(intent);
+                }
+                else {
+                    // 그 외 메뉴들은 Toast 메시지만 띄우도록 처리
+                    Toast.makeText(context, clickedTitle + " 메뉴 클릭됨", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
     }
 

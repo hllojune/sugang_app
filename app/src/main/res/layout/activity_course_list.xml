@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CourseListActivity">
+
+    <!-- 상단 바, 필요하다면 추가 -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar_course_list"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize" />
+
+    <!-- 프래그먼트가 표시될 컨테이너 (오류 3 해결) -->
+    <!-- 이 FrameLayout의 ID가 R.id.fragment_container가 됩니다. -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- 하단 네비게이션 뷰 (오류 2 해결) -->
+    <!-- 이 BottomNavigationView의 ID가 R.id.bottom_navigation이 됩니다. -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/bottom_nav_cart" />
+
+</LinearLayout>

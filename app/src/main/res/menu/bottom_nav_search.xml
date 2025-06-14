@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_nav_search"
+        android:title="개설강좌 조회" />
+
+    <item
+        android:id="@+id/bottom_nav_cart"
+        android:title="장바구니" />
+
+    <item
+        android:id="@+id/bottom_nav_registration_list"
+        android:title="수강신청 내역" />
+</menu>
