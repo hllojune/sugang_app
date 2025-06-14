@@ -2,6 +2,7 @@
 <resources>
 
     <color name="sku_blue">#0D47A1</color>
+    <color name="sku_yellow">#FFC107</color>
 
     <color name="accent_orange">#FF6F00</color>
     <color name="bright_blue">#448AFF</color>
@@ -13,6 +14,8 @@
     <color name="background_white">#FFFFFF</color>
     <color name="background_light_grey">#F5F5F5</color>
     <color name="background_login">#F1FCFE</color>
+    <color name="light_yellow">#F5EBB8</color>
+    <color name="light_orange">#F9E8DF</color>
 
     <color name="feedback_green">#4CAF50</color>
     <color name="feedback_red">#F44336</color>
