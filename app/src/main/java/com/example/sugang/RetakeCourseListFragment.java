@@ -22,17 +22,17 @@ public class RetakeCourseListFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_retake_courses);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // 전체 강의 데이터에서 '재이수' 키워드가 포함된 과목만 필터링
+        // "재이수" 키워드가 포함된 과목만 필터링
         ArrayList<Course> allCourses = DataSource.getSampleCourses();
         ArrayList<Course> retakeCourses = (ArrayList<Course>) allCourses.stream()
                 .filter(course -> course.getCourseName().contains("재이수"))
                 .collect(Collectors.toList());
 
-        // CourseListAdapter를 재사용하여 데이터를 RecyclerView에 연결
-        // "search" 타입으로 설정하여 '담기' 버튼 등이 표시되도록 함
-        CourseListAdapter adapter = new CourseListAdapter(retakeCourses, "search");
+        // 새로 만든 RetakeCourseAdapter를 사용
+        RetakeCourseAdapter adapter = new RetakeCourseAdapter(retakeCourses);
         recyclerView.setAdapter(adapter);
 
         return view;
     }
+
 }

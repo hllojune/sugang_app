@@ -15,20 +15,20 @@ public class SearchViewPagerAdapter extends FragmentStateAdapter {
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        // 각 탭의 위치(position)에 따라 다른 프래그먼트를 반환
         switch (position) {
             case 0:
                 return new DepartmentListFragment();    // '학과강좌' 탭
             case 1:
-                return CourseListFragment.newInstance("개설강좌"); // '개설강좌' 탭
+                return new AllCoursesFragment();        // '개설강좌' 탭
             case 2:
                 return new ProfessorListFragment();     // '교수강좌' 탭
             case 3:
-                return new RetakeCourseListFragment();  // '재이수' 탭 (수정됨)
+                return new RetakeCourseListFragment();      // '재이수' 탭
             default:
-                return new DepartmentListFragment(); // 기본값
+                return new Fragment(); // 기본값
         }
     }
+
 
     @Override
     public int getItemCount() {

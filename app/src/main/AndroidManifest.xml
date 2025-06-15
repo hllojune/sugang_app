@@ -26,6 +26,7 @@
         <activity android:name=".SubCategoryActivity" />
         <activity android:name=".CourseDetailListActivity" />
         <activity android:name=".SyllabusActivity" />
+        <activity android:name=".RetakeSearchResultActivity" />
     </application>
 
 </manifest>
