@@ -78,6 +78,13 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
                     // 담기 기능 구현
                 });
                 break;
+            case "cart_search": // 장바구니의 조회 모드
+                holder.actionButton.setImageResource(R.drawable.btn_registration); // '담기' 아이콘
+                holder.actionButton.setOnClickListener(v -> {
+                    CartManager.cartItems.add(currentCourse);
+                    Toast.makeText(v.getContext(), "장바구니에 추가되었습니다.", Toast.LENGTH_SHORT).show();
+                });
+                break;
             case "cart":
                 holder.actionButton.setImageResource(R.drawable.btn_delete); // '삭제' 아이콘
                 holder.actionButton.setOnClickListener(v -> {

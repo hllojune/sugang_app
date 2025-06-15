@@ -30,6 +30,9 @@
         <activity android:name=".RetakeSearchResultActivity" />
         <activity android:name=".CartHistoryActivity" />
         <activity android:name=".RegistrationHistoryActivity" />
+        <activity android:name=".CartActivity" />
+        <activity android:name=".DirectAddActivity" />
+        <activity android:name=".CartManageActivity" />
     </application>
 
 </manifest>

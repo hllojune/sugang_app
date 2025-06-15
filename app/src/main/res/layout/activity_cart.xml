@@ -5,18 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SearchActivity">
+    tools:context=".CartActivity">
 
     <!-- 상단 바 -->
     <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbar_search"
+        android:id="@+id/toolbar_cart"
         android:layout_width="match_parent"
         android:layout_height="72dp"
-        app:navigationIcon="@drawable/ic_arrow_back"
         android:background="@color/sku_blue"
-        app:title="조회"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:navigationIconTint="@color/white"
         app:titleCentered="true"
-        app:titleTextColor="@color/white" />
+        app:titleTextColor="@color/white"
+        app:title="장바구니" />
 
     <!-- 상단 필터 탭과 검색창을 담는 영역 -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,8 +25,8 @@
         android:layout_height="48dp">
 
         <com.google.android.material.tabs.TabLayout
-            android:id="@+id/tab_layout_top_filter"
-            android:layout_width="match_parent"
+            android:id="@+id/tab_layout_cart_filter"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/search_view"
@@ -43,16 +44,16 @@
 
     <!-- 프래그먼트가 표시될 영역 -->
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/view_pager_content"
+        android:id="@+id/view_pager_cart_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <!-- 하단 네비게이션 탭 -->
+    <!-- 하단 네비게이션 -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation_main"
+        android:id="@+id/bottom_navigation_cart"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        app:menu="@menu/bottom_nav_search" />
+        app:menu="@menu/bottom_nav_cart" />
 
 </LinearLayout>

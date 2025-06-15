@@ -69,7 +69,7 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.MenuVi
             } else if (clickedTitle.equals("조회")) {
                 intent = new Intent(context, SearchActivity.class);
             } else if (clickedTitle.equals("장바구니")) {
-                // TODO: CartActivity를 만들고 연결
+                intent = new Intent(context, CartActivity.class);
             } else if (clickedTitle.equals("수강신청")) {
                 // TODO: RegistrationActivity를 만들고 연결
             }
