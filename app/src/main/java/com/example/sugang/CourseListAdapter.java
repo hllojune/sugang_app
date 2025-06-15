@@ -2,11 +2,15 @@ package com.example.sugang;
 
 // CourseListAdapter.java
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
@@ -19,9 +23,10 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
     // ViewHolder: list_item_course.xml의 뷰들을 담는 그릇
     // 이 부분이 어댑터의 필수 구성 요소입니다.
     public static class CourseViewHolder extends RecyclerView.ViewHolder {
-        public TextView courseCode, courseName, details, timeAndPlace, target;
-        public Button actionButton;
+        public TextView courseCode, courseName, details, professor, timeAndPlace, target;
+        public ImageButton actionButton;
 
+        @SuppressLint("WrongViewCast")
         public CourseViewHolder(@NonNull View itemView) {
             super(itemView);
             // list_item_course.xml 파일에 정의된 ID와 일치해야 합니다.
@@ -29,6 +34,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
             courseCode = itemView.findViewById(R.id.tv_course_code);
             courseName = itemView.findViewById(R.id.tv_course_name);
             details = itemView.findViewById(R.id.tv_course_details);
+            professor = itemView.findViewById(R.id.tv_course_professor);
             timeAndPlace = itemView.findViewById(R.id.tv_course_time_place);
             target = itemView.findViewById(R.id.tv_course_target);
             actionButton = itemView.findViewById(R.id.btn_action);
@@ -59,22 +65,32 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
         holder.courseCode.setText(currentCourse.getCourseCode());
         holder.courseName.setText(currentCourse.getCourseName());
         holder.details.setText(currentCourse.getDetails());
+        holder.professor.setText(currentCourse.getDetails());
         holder.timeAndPlace.setText(currentCourse.getTimeAndPlace());
         holder.target.setText(currentCourse.getTarget());
 
-        // 타입에 따라 버튼의 텍스트와 기능을 다르게 설정
+        // 타입에 따라 다른 아이콘을 설정
         switch (adapterType) {
             case "search":
-                holder.actionButton.setText("담기");
-                // 담기 기능 리스너 설정
+                holder.actionButton.setImageResource(R.drawable.btn_sinchung); // '담기' 아이콘
+                holder.actionButton.setOnClickListener(v -> {
+                    Toast.makeText(v.getContext(), currentCourse.getCourseName() + " 담기", Toast.LENGTH_SHORT).show();
+                    // 담기 기능 구현
+                });
                 break;
             case "cart":
-                holder.actionButton.setText("삭제");
-                // 삭제 기능 리스너 설정
+                holder.actionButton.setImageResource(R.drawable.btn_delete); // '삭제' 아이콘
+                holder.actionButton.setOnClickListener(v -> {
+                    Toast.makeText(v.getContext(), currentCourse.getCourseName() + " 삭제", Toast.LENGTH_SHORT).show();
+                    // 삭제 기능 구현
+                });
                 break;
             case "registration":
-                holder.actionButton.setText("신청");
-                // 신청 기능 리스너 설정
+                holder.actionButton.setImageResource(R.drawable.btn_sinchung); // '신청' 아이콘
+                holder.actionButton.setOnClickListener(v -> {
+                    Toast.makeText(v.getContext(), currentCourse.getCourseName() + " 신청", Toast.LENGTH_SHORT).show();
+                    // 신청 기능 구현
+                });
                 break;
         }
     }

@@ -1,30 +1,25 @@
 package com.example.sugang;
 
 import android.os.Bundle;
-
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import java.util.ArrayList;
-
-// CourseListFragment.java
+import java.util.stream.Collectors;
 
 public class CourseListFragment extends Fragment {
 
-    private String fragmentType;
+    private String listType;
 
-    // 프래그먼트를 생성할 때 타입을 전달받는 메소드
     public static CourseListFragment newInstance(String type) {
         CourseListFragment fragment = new CourseListFragment();
         Bundle args = new Bundle();
-        args.putString("type", type);
+        args.putString("LIST_TYPE", type);
         fragment.setArguments(args);
         return fragment;
     }
@@ -33,7 +28,7 @@ public class CourseListFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            fragmentType = getArguments().getString("type");
+            listType = getArguments().getString("LIST_TYPE");
         }
     }
 
@@ -42,22 +37,35 @@ public class CourseListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_course_list, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_courses);
-
-        // 1. fragmentType에 따라 다른 데이터를 가져온다.
-        // 예: "search" -> 전체 강의 목록, "cart" -> 장바구니 목록
-        ArrayList<Course> courseList = getCoursesByType(fragmentType);
-
-        // 2. 어댑터를 생성할 때 fragmentType을 함께 전달한다.
-        CourseListAdapter adapter = new CourseListAdapter(courseList, fragmentType);
-        recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        return view;
-    }
+        // --- 이 부분이 핵심적인 수정 포인트 ---
 
-    // ... (타입에 따라 다른 데이터를 가져오는 메소드 예시) ...
-    private ArrayList<Course> getCoursesByType(String type) {
-        // ...
-        return new ArrayList<>();
+        // 1. listType에 따라 보여줄 데이터를 필터링합니다.
+        ArrayList<Course> allCourses = DataSource.getSampleCourses();
+        ArrayList<Course> filteredCourses = new ArrayList<>();
+
+        if ("재이수".equals(listType)) {
+            // "재이수" 타입일 경우, 이름에 "재이수"이 포함된 과목만 필터링
+            for (Course course : allCourses) {
+                if (course.getCourseName().contains("재이수")) {
+                    filteredCourses.add(course);
+                }
+            }
+        } else {
+            // "개설강좌" 또는 다른 타입일 경우, 재이수 과목을 제외한 모든 과목을 표시
+            for (Course course : allCourses) {
+                if (!course.getCourseName().contains("재이수")) {
+                    filteredCourses.add(course);
+                }
+            }
+        }
+
+        // 2. 필터링된 데이터를 어댑터에 전달합니다.
+        // 어댑터 타입도 "search"로 고정하지 않고, 상황에 맞게 설정할 수 있습니다.
+        CourseListAdapter adapter = new CourseListAdapter(filteredCourses, "search");
+        recyclerView.setAdapter(adapter);
+
+        return view;
     }
 }
