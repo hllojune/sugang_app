@@ -1,5 +1,6 @@
 package com.example.sugang;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,8 +56,24 @@ public class SimpleTextAdapter extends RecyclerView.Adapter<SimpleTextAdapter.Si
 
         // 각 항목에 클릭 이벤트를 설정합니다.
         holder.itemView.setOnClickListener(v -> {
-            Toast.makeText(v.getContext(), currentItem + " 선택됨", Toast.LENGTH_SHORT).show();
-            // TODO: 학과나 교수를 선택했을 때, 해당 강의 목록을 보여주는 화면으로 이동하는 로직을 구현할 수 있습니다.
+            // 1. '###'으로 시작하는 학과를 클릭했을 경우
+            if (currentItem.startsWith("###")) {
+                Intent intent = new Intent(v.getContext(), CourseDetailListActivity.class);
+                intent.putExtra("COURSE_LIST_TYPE", "computer_science"); // 타입을 "computer_science"로 전달
+                intent.putExtra("COURSE_LIST_TITLE", currentItem.replace("#","").trim());
+                v.getContext().startActivity(intent);
+            }
+            // 2. '교양'이라는 단어가 포함된 항목을 클릭했을 경우
+            else if (currentItem.contains("교양")) {
+                Intent intent = new Intent(v.getContext(), CourseDetailListActivity.class);
+                intent.putExtra("COURSE_LIST_TYPE", "general_essential"); // 타입을 "general_essential"로 전달
+                intent.putExtra("COURSE_LIST_TITLE", currentItem);
+                v.getContext().startActivity(intent);
+            }
+            // 3. 그 외의 경우
+            else {
+                Toast.makeText(v.getContext(), currentItem + " 선택됨", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 

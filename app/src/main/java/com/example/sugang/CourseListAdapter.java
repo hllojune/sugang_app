@@ -72,7 +72,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
         // 타입에 따라 다른 아이콘을 설정
         switch (adapterType) {
             case "search":
-                holder.actionButton.setImageResource(R.drawable.btn_sinchung); // '담기' 아이콘
+                holder.actionButton.setImageResource(R.drawable.btn_registration); // '담기' 아이콘
                 holder.actionButton.setOnClickListener(v -> {
                     Toast.makeText(v.getContext(), currentCourse.getCourseName() + " 담기", Toast.LENGTH_SHORT).show();
                     // 담기 기능 구현
@@ -86,10 +86,17 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Co
                 });
                 break;
             case "registration":
-                holder.actionButton.setImageResource(R.drawable.btn_sinchung); // '신청' 아이콘
+                holder.actionButton.setImageResource(R.drawable.btn_registration); // '신청' 아이콘
                 holder.actionButton.setOnClickListener(v -> {
                     Toast.makeText(v.getContext(), currentCourse.getCourseName() + " 신청", Toast.LENGTH_SHORT).show();
                     // 신청 기능 구현
+                });
+                break;
+            case "syllabus":
+                holder.actionButton.setImageResource(R.drawable.btn_syllabus); // 강의계획서 아이콘으로 설정
+                holder.actionButton.setOnClickListener(v -> {
+                    // TODO: SyllabusActivity를 만들어 강의계획서 상세 내용을 보여주는 로직 구현
+                    Toast.makeText(v.getContext(), "강의계획서 보기", Toast.LENGTH_SHORT).show();
                 });
                 break;
         }

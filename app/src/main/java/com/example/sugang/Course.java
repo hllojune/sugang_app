@@ -1,15 +1,16 @@
 package com.example.sugang;
 
+import java.io.Serializable;
+
 // Course.java
 
-public class Course {
+public class Course implements Serializable {
     private String courseCode;    // 과목코드 (예: "06263001")
     private String courseName;    // 과목명
     private String details;       // 세부 정보 (예: "전선 3학점...")
-
     private String professor;     // 교수명
     private String timeAndPlace;  // 시간/강의실
-    private String target;        // 강의대상학과
+    private String target;        // 대상 학부(과)
 
     // 생성자
     public Course(String courseCode, String courseName, String details,String professor, String timeAndPlace, String target) {
