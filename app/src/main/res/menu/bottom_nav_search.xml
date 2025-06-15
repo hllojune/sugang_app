@@ -7,8 +7,8 @@
         android:title="개설강좌 조회" />
 
     <item
-        android:id="@+id/bottom_nav_cart"
-        android:title="장바구니" />
+        android:id="@+id/bottom_nav_cart_history"
+        android:title="장바구니 내역조회" />
 
     <item
         android:id="@+id/bottom_nav_registration_list"

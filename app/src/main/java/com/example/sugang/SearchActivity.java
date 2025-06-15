@@ -77,19 +77,14 @@ public class SearchActivity extends AppCompatActivity {
         bottomNav.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
             if (itemId == R.id.bottom_nav_search) {
-                // 현재 화면이므로 아무 동작도 하지 않음
                 return true;
-            } else if (itemId == R.id.bottom_nav_cart) {
-                // 장바구니 내역조회 화면으로 이동
-                // Intent intent = new Intent(SearchActivity.this, CartActivity.class);
-                // startActivity(intent);
-                // finish(); // 현재 화면을 닫아 스택이 쌓이지 않게 함 (선택사항)
+            } else if (itemId == R.id.bottom_nav_cart_history) { // ID를 메뉴 파일과 일치시켜야 함
+                Intent intent = new Intent(SearchActivity.this, CartHistoryActivity.class);
+                startActivity(intent);
                 return true;
             } else if (itemId == R.id.bottom_nav_registration_list) {
-                // 수강신청 내역조회 화면으로 이동
-                // Intent intent = new Intent(SearchActivity.this, RegistrationListActivity.class);
-                // startActivity(intent);
-                // finish();
+                Intent intent = new Intent(SearchActivity.this, RegistrationHistoryActivity.class);
+                startActivity(intent);
                 return true;
             }
             return false;

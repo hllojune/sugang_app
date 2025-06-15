@@ -22,11 +22,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".SettingsActivity" />
+        <activity android:name=".NoticeActivity" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".SubCategoryActivity" />
         <activity android:name=".CourseDetailListActivity" />
         <activity android:name=".SyllabusActivity" />
         <activity android:name=".RetakeSearchResultActivity" />
+        <activity android:name=".CartHistoryActivity" />
+        <activity android:name=".RegistrationHistoryActivity" />
     </application>
 
 </manifest>

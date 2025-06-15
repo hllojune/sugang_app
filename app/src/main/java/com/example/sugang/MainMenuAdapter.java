@@ -58,28 +58,26 @@ public class MainMenuAdapter extends RecyclerView.Adapter<MainMenuAdapter.MenuVi
         holder.subtitle.setText(currentItem.getSubtitle());
 
         // 각 아이템 뷰에 클릭 이벤트를 설정합니다.
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // 클릭된 아이템의 제목을 가져옵니다.
-                String clickedTitle = currentItem.getTitle();
-                Context context = v.getContext();
+        holder.itemView.setOnClickListener(v -> {
+            String clickedTitle = currentItem.getTitle();
+            Context context = v.getContext();
+            Intent intent = null; // Intent를 미리 선언
 
-                // 클릭된 아이템이 '조회'일 경우
-                if (clickedTitle.equals("조회")) {
-                    // SearchActivity로 이동하는 Intent를 생성합니다.
-                    Intent intent = new Intent(context, SearchActivity.class);
-                    context.startActivity(intent);
-                }
-                // 다른 메뉴 아이템에 대한 처리 (필요하다면)
-                else if (clickedTitle.equals("장바구니")) {
-                    // Intent intent = new Intent(context, CartActivity.class);
-                    // context.startActivity(intent);
-                }
-                else {
-                    // 그 외 메뉴들은 Toast 메시지만 띄우도록 처리
-                    Toast.makeText(context, clickedTitle + " 메뉴 클릭됨", Toast.LENGTH_SHORT).show();
-                }
+            // 클릭된 아이템의 제목에 따라 다른 액티비티로 이동
+            if (clickedTitle.equals("공지사항")) {
+                intent = new Intent(context, NoticeActivity.class);
+            } else if (clickedTitle.equals("조회")) {
+                intent = new Intent(context, SearchActivity.class);
+            } else if (clickedTitle.equals("장바구니")) {
+                // TODO: CartActivity를 만들고 연결
+            } else if (clickedTitle.equals("수강신청")) {
+                // TODO: RegistrationActivity를 만들고 연결
+            }
+
+            if (intent != null) {
+                context.startActivity(intent);
+            } else {
+                Toast.makeText(context, clickedTitle + " 메뉴 클릭됨", Toast.LENGTH_SHORT).show();
             }
         });
     }
